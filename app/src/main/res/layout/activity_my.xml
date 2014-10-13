@@ -37,7 +37,7 @@
         android:layout_marginTop="24dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="http://10.2.128.173:9091/route/usageservice/getUsage" />
+        android:text="http://178.62.5.91:9091/route/usageservice/getUsage" />
 
     <EditText
         android:layout_width="wrap_content"

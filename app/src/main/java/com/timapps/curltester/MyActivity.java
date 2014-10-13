@@ -19,6 +19,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 
 public class MyActivity extends Activity {
@@ -58,11 +59,14 @@ public class MyActivity extends Activity {
                             BufferedReader br = new BufferedReader(isReader);
                             output = br.readLine();
                         } else {
+                            InputStream inputStream = connection.getErrorStream();
+                            Scanner s = new java.util.Scanner(inputStream).useDelimiter("\\A");
                             output = "Received error response code from endpoint: " +
-                                    new Integer(connection.getResponseCode()).toString();
+                                    new Integer(connection.getResponseCode()).toString() +
+                                    " error body: " + s.next();
                         }
                     } catch (IOException ex) {
-                        output = "Unable to connect to the URL";
+                        output = "Unable to connect to the URL: " + ex.toString();
                     }
 
                     return output;
